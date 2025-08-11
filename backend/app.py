@@ -90,9 +90,11 @@ class RecommendationSystem:
         
         # Create user and movie mappings
         self.user_to_idx = {user.id: idx for idx, user in enumerate(users)}
-        self.idx_to_user = {idx: user.id for user_id, idx in self.user_to_idx.items()}
+        # Reverse mapping from index to user ID
+        self.idx_to_user = {idx: user_id for user_id, idx in self.user_to_idx.items()}
         self.movie_to_idx = {movie.id: idx for idx, movie in enumerate(movies)}
-        self.idx_to_movie = {idx: movie.id for movie_id, idx in self.movie_to_idx.items()}
+        # Reverse mapping from index to movie ID
+        self.idx_to_movie = {idx: movie_id for movie_id, idx in self.movie_to_idx.items()}
         
         # Prepare content features for content-based filtering
         movie_features = []
